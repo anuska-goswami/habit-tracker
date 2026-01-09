@@ -1,0 +1,473 @@
+:root {
+    /* Pastel Palette - Light Mode */
+    --bg-color: #fdfcf8;
+    /* Soft warm white */
+    --text-color: #4a4a4a;
+    --card-bg: #ffffff;
+    --accent-sage: #c1d7c3;
+    --accent-lavender: #d8c3e6;
+    --accent-beige: #f4eee0;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --btn-hover: #e0d0c0;
+    --success-color: #66bb6a;
+    /* Brighter, more dominant green */
+
+    /* Typography */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Quicksand', sans-serif;
+
+    /* Transition */
+    --transition-speed: 0.3s;
+}
+
+body.dark-mode {
+    --bg-color: #2c2c2c;
+    --text-color: #f0f0f0;
+    --card-bg: #3a3a3a;
+    --accent-sage: #536d56;
+    --accent-lavender: #6a537d;
+    --accent-beige: #4a4a40;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --btn-hover: #5a5a50;
+    --success-color: #4caf50;
+    /* Brighter green for dark mode too */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: transparent;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.theme-btn:hover {
+    background-color: var(--shadow-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quote-section {
+    text-align: center;
+    margin-bottom: 30px;
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.progress-section {
+    margin-bottom: 30px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background-color: var(--accent-beige);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 4px var(--shadow-color);
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--accent-sage);
+    width: 0%;
+    transition: width 0.5s ease-out;
+    border-radius: 20px;
+}
+
+#progress-text {
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.habits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.habit-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.habit-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.habit-card.completed {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.habit-info {
+    flex-grow: 1;
+}
+
+.habit-name {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.habit-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    opacity: 0.4;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.2rem;
+    transition: opacity 0.2s, color 0.2s;
+    line-height: 1;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    color: #e57373;
+    /* Soft red */
+}
+
+.habit-streak {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ... existing styles ... */
+
+.add-habit-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#habit-input {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: 2px solid var(--accent-beige);
+    border-radius: 30px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#habit-input:focus {
+    border-color: var(--accent-sage);
+}
+
+#add-habit-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--accent-sage);
+    color: white;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#add-habit-btn:hover {
+    background-color: var(--success-color);
+    transform: translateY(-2px);
+}
+
+.calendar-section {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.calendar-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+#calendar-month {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    opacity: 0.8;
+    font-family: var(--font-body);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: transform 0.2s;
+}
+
+.calendar-day.success {
+    background-color: var(--accent-sage);
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.today {
+    border: 2px solid var(--accent-lavender);
+}
+
+.deleting {
+    animation: fadeOut 0.4s forwards;
+    pointer-events: none;
+    /* Prevent clicks during animation */
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.9) translateY(10px);
+        margin-bottom: -60px;
+        /* Adjust layout collapse */
+    }
+}
+
+.controls {
+    text-align: center;
+}
+
+/* Auth Styles */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.auth-form {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-form h2 {
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--accent-beige);
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.auth-form input:focus {
+    border-color: var(--accent-sage);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-lavender);
+    border: none;
+    border-radius: 12px;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.switch-auth {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.switch-auth a {
+    color: var(--accent-sage);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout-btn {
+    background: none;
+    border: 1px solid var(--text-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+    background-color: var(--shadow-color);
+}
+
+.user-greeting {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Header Layout adjustment for logout button */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-left h1 {
+    font-size: 1.8rem;
+}
+
+
+.reset-btn {
+    background-color: var(--accent-lavender);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.reset-btn:hover {
+    background-color: #caafd8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px var(--shadow-color);
+}
+
+@media (max-width: 480px) {
+    .habits-grid {
+        grid-template-columns: 1fr;
+    }
+}
